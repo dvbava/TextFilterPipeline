@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TextFilter.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "TestInput.txt"
+    }
+  }
+}
