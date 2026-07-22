@@ -3,9 +3,9 @@ using TextFilter.Core.Filters;
 namespace TextFilter.Tests;
 
 [TestFixture]
-public sealed class WordLengthFilterTests
+public sealed class MinWordLengthFilterTests
 {
-    private readonly WordLengthFilter _sut = new(3);
+    private readonly MinWordLengthFilter _sut = new(3);
 
     [Test]
     public void ShouldKeep_EmptyString_ReturnsFalse()

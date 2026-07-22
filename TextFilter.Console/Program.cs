@@ -20,7 +20,7 @@ public static class Program
             //todo: consider setting can come from configuration file.
 
             new MiddleCharsFilter(['a', 'e', 'i', 'o', 'u']),
-			new WordLengthFilter(3),
+			new MinWordLengthFilter(3),
 			new ContainsCharFilter('t')
 		]);
 

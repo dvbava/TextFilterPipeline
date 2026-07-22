@@ -20,7 +20,7 @@ public sealed class TextFilterPipelineTests
     [Test]
     public void Process_SingleFilter_AppliesFilter()
     {
-        var sut = new TextFilterPipeline([new WordLengthFilter(3)]);
+        var sut = new TextFilterPipeline([new MinWordLengthFilter(3)]);
         var input = new[] { "a", "abc", "de" };
 
         var result = sut.Process(input).ToArray();
@@ -32,7 +32,7 @@ public sealed class TextFilterPipelineTests
     [Test]
     public void Process_AllFiltersAppliedCorrectly_ReturnsExpectedOutput()
     {
-        var sut = new TextFilterPipeline([new MiddleCharsFilter(new char[] { 'a', 'e', 'i', 'o', 'u' }), new WordLengthFilter(3), new ContainsCharFilter('t')]);
+        var sut = new TextFilterPipeline([new MiddleCharsFilter(new char[] { 'a', 'e', 'i', 'o', 'u' }), new MinWordLengthFilter(3), new ContainsCharFilter('t')]);
         var input = new[] { "the", "what", "myth", "rather", "cat", "sky" };
 
         var result = sut.Process(input).ToArray();
@@ -43,7 +43,7 @@ public sealed class TextFilterPipelineTests
     [Test]
     public void Process_EmptyInput_ReturnsEmpty()
     {
-        var sut = new TextFilterPipeline([new WordLengthFilter(3)]);
+        var sut = new TextFilterPipeline([new MinWordLengthFilter(3)]);
 
         var result = sut.Process(Array.Empty<string>()).ToArray();
 

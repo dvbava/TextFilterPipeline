@@ -1,10 +1,10 @@
 namespace TextFilter.Core.Filters;
 
-public sealed class WordLengthFilter : ITextFilter
+public sealed class MinWordLengthFilter : ITextFilter
 {
     private readonly int _minLength;
 
-    public WordLengthFilter(int minLength)
+    public MinWordLengthFilter(int minLength)
     {
         _minLength = minLength;
     }

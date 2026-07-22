@@ -11,7 +11,7 @@ public sealed class TextProcessingOrchestratorTests
     public void Process_SuccessfulEndToEndProcessing_ReturnsFilteredWords()
     {
         var source = new FakeWordSource(new[] { "the", "what", "myth", "sky" });
-        var pipeline = new TextFilterPipeline([new MiddleCharsFilter(new char[] { 'a', 'e', 'i', 'o', 'u' }), new WordLengthFilter(3), new ContainsCharFilter('t')]);
+        var pipeline = new TextFilterPipeline([new MiddleCharsFilter(new char[] { 'a', 'e', 'i', 'o', 'u' }), new MinWordLengthFilter(3), new ContainsCharFilter('t')]);
         var sut = new TextProcessingOrchestrator(source, pipeline);
 
         var result = sut.Process("ignored-path").ToArray();
@@ -23,7 +23,7 @@ public sealed class TextProcessingOrchestratorTests
     public void Process_EmptyInput_ReturnsEmpty()
     {
         var source = new FakeWordSource(Array.Empty<string>());
-        var pipeline = new TextFilterPipeline([new WordLengthFilter(3)]);
+        var pipeline = new TextFilterPipeline([new MinWordLengthFilter(3)]);
         var sut = new TextProcessingOrchestrator(source, pipeline);
 
         var result = sut.Process("ignored-path").ToArray();
